@@ -16,7 +16,7 @@ listData = listData.slice(1, listData.length - 1);
 
 var tongDiemQuyDoi = 0;
 var tongTinChiTichLuy = 0; //ko tính thể chất và toán 1-5 (toán 1-5 giờ đã đổi tên)
-var subjecPointF = 0;  //ko tính thể chất và toán 1-5 (toán 1-5 giờ đã đổi tên)
+var monHocDiemF = 0;  //ko tính thể chất và toán 1-5 (toán 1-5 giờ đã đổi tên)
 var diemTichLuy;
 
 //Đổi điểm chữ ra số : A = 4, B = 3, C = 2, D = 1, F = 0
@@ -46,23 +46,19 @@ for(var item of listData){
            var charPoint = item[13].textContent.slice(-1);
             var numPoint = covertCharToPoint(charPoint);
             if(numPoint === 0)
-              subjecPointF += 1;
+              monHocDiemF += 1;
             if (numPoint !== 0) {
               var soTinMonHoc = parseInt(item[3].textContent);
               tongTinChiTichLuy += soTinMonHoc;
               tongDiemQuyDoi += (soTinMonHoc * numPoint);
-            }
-            
+            }            
         }
     }
-
- 
 }
 
 diemTichLuy = tongDiemQuyDoi/tongTinChiTichLuy
 
-alert(`Bạn trượt : ${subjecPointF} môn học\nTổng số tín chỉ tích lũy: ${tongTinChiTichLuy} tín chỉ\nĐiểm tích lũy của bạn: ${diemTichLuy}
+alert(`Bạn trượt : ${monHocDiemF} môn học\nTổng số tín chỉ tích lũy: ${tongTinChiTichLuy} tín chỉ\nĐiểm tích lũy của bạn: ${diemTichLuy}
       `);
-      
       
 ```
