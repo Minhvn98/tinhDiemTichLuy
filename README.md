@@ -10,14 +10,14 @@
 ```javascript
 // Code chỉ đúng trên trang đkh của k60 trở về trước thôi
 // k61 thì trường dùng trang khác 
-var listData = document.querySelectorAll('#tblStudentMark tr');
+let listData = document.querySelectorAll('#tblStudentMark tr');
 listData = Array.from(listData);
 listData = listData.slice(1, listData.length - 1);
 
-var tongDiemQuyDoi = 0;
-var tongTinChiTichLuy = 0; //ko tính thể chất và toán 1-5 (toán 1-5 giờ đã đổi tên)
-var monHocDiemF = 0;  //ko tính thể chất và toán 1-5 (toán 1-5 giờ đã đổi tên)
-var diemTichLuy;
+let tongDiemQuyDoi = 0;
+let tongTinChiTichLuy = 0; //ko tính thể chất và toán 1-5 (toán 1-5 giờ đã đổi tên)
+let monHocDiemF = 0;  //ko tính thể chất và toán 1-5 (toán 1-5 giờ đã đổi tên)
+let diemTichLuy;
 
 //Đổi điểm chữ ra số : A = 4, B = 3, C = 2, D = 1, F = 0
 function covertCharToPoint(charPoint) {
@@ -34,21 +34,21 @@ function covertCharToPoint(charPoint) {
 }
 
 
-for(var item of listData){
+for(let item of listData){
     item = item.querySelectorAll('td');
 
     if(item.length !== 0) {
 
         //check mấy môn thể chất và toán
-        var codeSubject = item[1].textContent;
+        let codeSubject = item[1].textContent;
         // Code by Minh Chen nhưng do Minh ngu Regex nên dùng tạm indexof
         if(codeSubject.indexOf('MATH0') === -1 && codeSubject.indexOf('TDUC') === -1) {
-           var charPoint = item[13].textContent.slice(-1);
-            var numPoint = covertCharToPoint(charPoint);
+           let charPoint = item[13].textContent.slice(-1);
+            let numPoint = covertCharToPoint(charPoint);
             if(numPoint === 0)
               monHocDiemF += 1;
             if (numPoint !== 0) {
-              var soTinMonHoc = parseInt(item[3].textContent);
+              let soTinMonHoc = parseInt(item[3].textContent);
               tongTinChiTichLuy += soTinMonHoc;
               tongDiemQuyDoi += (soTinMonHoc * numPoint);
             }            
