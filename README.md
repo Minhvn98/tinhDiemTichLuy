@@ -43,7 +43,7 @@ for(let item of listData){
         let codeSubject = item[1].textContent;
         // Code by Minh Chen nhưng do Minh ngu Regex nên dùng tạm indexof
         if(codeSubject.indexOf('MATH0') === -1 && codeSubject.indexOf('TDUC') === -1) {
-           let charPoint = item[13].textContent.slice(-1);
+            let charPoint = item[13].textContent.slice(-1);
             let numPoint = covertCharToPoint(charPoint);
             if(numPoint === 0)
               monHocDiemF += 1;
