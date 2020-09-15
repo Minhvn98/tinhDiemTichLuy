@@ -22,7 +22,7 @@ let diemTichLuy;
 let soTinA = 0, soTinB = 0, soTinC = 0, soTinD = 0, soTinF = 0;
 
 //Đổi điểm chữ ra số : A = 4, B = 3, C = 2, D = 1, F = 0
-function covertCharToPoint(charPoint) {
+function convertCharPoint(charPoint) {
   if(charPoint === 'A')
     return 4;
   if(charPoint === 'B')
@@ -46,7 +46,7 @@ for(let item of listData){
         // Code by Minh Chen nhưng do Minh ngu Regex nên dùng tạm indexof
         if(codeSubject.indexOf('MATH0') === -1 && codeSubject.indexOf('TDUC') === -1) {
             let charPoint = item[13].textContent.slice(-1);
-            let numPoint = covertCharToPoint(charPoint);
+            let numPoint = convertCharPoint(charPoint);
             let soTinMonHoc = parseInt(item[3].textContent);
 
             if(numPoint === 0){
@@ -85,3 +85,4 @@ alert('Bạn trượt : ' + monHocDiemF + 'môn học'
     + '\nTổng số tín chỉ tích lũy : ' + tongTinChiTichLuy + ' tín chỉ'
     + '\nĐiểm tích lũy của bạn : ' + diemTichLuy
 );
+      
