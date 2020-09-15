@@ -9,6 +9,7 @@
 ### Bước 5: Bấm Enter và xem kết quả
 ```javascript
 // Code chỉ đúng trên trang đkh của k60 trở về trước thôi
+// Ko tính các môn thể chất
 // k61 thì trường dùng trang khác 
 let listData = document.querySelectorAll('#tblStudentMark tr');
 listData = Array.from(listData);
@@ -18,6 +19,7 @@ let tongDiemQuyDoi = 0;
 let tongTinChiTichLuy = 0; //ko tính thể chất và toán 1-5 (toán 1-5 giờ đã đổi tên)
 let monHocDiemF = 0;  //ko tính thể chất và toán 1-5 (toán 1-5 giờ đã đổi tên)
 let diemTichLuy;
+let soTinA = 0, soTinB = 0, soTinC = 0, soTinD = 0, soTinF = 0;
 
 //Đổi điểm chữ ra số : A = 4, B = 3, C = 2, D = 1, F = 0
 function covertCharToPoint(charPoint) {
@@ -45,10 +47,26 @@ for(let item of listData){
         if(codeSubject.indexOf('MATH0') === -1 && codeSubject.indexOf('TDUC') === -1) {
             let charPoint = item[13].textContent.slice(-1);
             let numPoint = covertCharToPoint(charPoint);
-            if(numPoint === 0)
+            let soTinMonHoc = parseInt(item[3].textContent);
+
+            if(numPoint === 0){
               monHocDiemF += 1;
+              soTinF += soTinMonHoc;
+            }
+             
+
             if (numPoint !== 0) {
-              let soTinMonHoc = parseInt(item[3].textContent);
+              
+
+              if(charPoint === 'A')
+                soTinA += soTinMonHoc;
+              if(charPoint === 'B')
+                soTinB += soTinMonHoc; 
+              if(charPoint === 'C')
+                soTinC += soTinMonHoc;
+              if(charPoint === 'D')
+                soTinD += soTinMonHoc;
+
               tongTinChiTichLuy += soTinMonHoc;
               tongDiemQuyDoi += (soTinMonHoc * numPoint);
             }            
@@ -58,7 +76,6 @@ for(let item of listData){
 
 diemTichLuy = tongDiemQuyDoi/tongTinChiTichLuy
 
-alert(`Bạn trượt : ${monHocDiemF} môn học\nTổng số tín chỉ tích lũy: ${tongTinChiTichLuy} tín chỉ\nĐiểm tích lũy của bạn: ${diemTichLuy}
+alert(`Bạn trượt : ${monHocDiemF} môn học\nBạn có : ${soTinA} tín chỉ A\nBạn có : ${soTinB} tín chỉ B\nBạn có : ${soTinC} tín chỉ C\nBạn có : ${soTinD} tín chỉ D\nBạn có : ${soTinF} tín chỉ F\nTổng số tín chỉ tích lũy: ${tongTinChiTichLuy} tín chỉ\nĐiểm tích lũy của bạn: ${diemTichLuy}
       `);
       
-```
