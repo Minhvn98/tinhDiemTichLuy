@@ -11,6 +11,7 @@
 // Code chỉ đúng trên trang đkh của k60 trở về trước thôi
 // Ko tính các môn thể chất
 // k61 thì trường dùng trang khác 
+
 let listData = document.querySelectorAll('#tblStudentMark tr');
 listData = Array.from(listData);
 listData = listData.slice(1, listData.length - 1);
@@ -22,17 +23,10 @@ let diemTichLuy;
 let soTinA = 0, soTinB = 0, soTinC = 0, soTinD = 0, soTinF = 0;
 
 //Đổi điểm chữ ra số : A = 4, B = 3, C = 2, D = 1, F = 0
+
 function convertCharPoint(charPoint) {
-  if(charPoint === 'A')
-    return 4;
-  if(charPoint === 'B')
-    return 3;
-  if(charPoint === 'C')
-    return 2;
-  if(charPoint === 'D')
-    return 1;
-  if(charPoint === 'F')
-    return 0;
+  const listPoint = {A: 4, B: 3, C: 2, D: 1, F: 0};
+  return listPoint[charPoint];
 }
 
 
@@ -77,13 +71,12 @@ for(let item of listData){
 diemTichLuy = tongDiemQuyDoi/tongTinChiTichLuy
 
 alert(`Xin chào !!!
-    Bạn trượt : ${monHocDiemF} môn học
     Bạn có : ${soTinA} tín chỉ A
     Bạn có : ${soTinB} tín chỉ B
     Bạn có : ${soTinC} tín chỉ C
     Bạn có : ${soTinD} tín chỉ D
-    Bạn có : ${soTinF} tín chỉ F
+    Bạn có : ${soTinF} tín chỉ F - Bạn trượt : ${monHocDiemF} môn học
     Tổng số tín chỉ tích lũy : ${tongTinChiTichLuy} tín chỉ
     Điểm tích lũy của bạn : ${diemTichLuy}
+    Điểm làm tròn : ${parseFloat(diemTichLuy).toFixed(2)}
 `);
-      
