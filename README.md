@@ -12,6 +12,8 @@
 // Ko tính các môn thể chất
 // k61 thì trường dùng trang khác 
 
+
+let studentName = document.getElementById('lblStudentName').textContent
 let listData = document.querySelectorAll('#tblStudentMark tr');
 listData = Array.from(listData);
 listData = listData.slice(1, listData.length - 1);
@@ -70,7 +72,7 @@ for(let item of listData){
 
 diemTichLuy = tongDiemQuyDoi/tongTinChiTichLuy
 
-alert(`Xin chào !!!
+alert(`Xin chào : ${studentName}
     Bạn có : ${soTinA} tín chỉ A
     Bạn có : ${soTinB} tín chỉ B
     Bạn có : ${soTinC} tín chỉ C
