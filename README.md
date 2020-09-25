@@ -76,13 +76,14 @@ for(let item of listData){
 
 diemTichLuy = tongDiemQuyDoi/tongTinChiTichLuy
 
-alert('Bạn trượt : ' + monHocDiemF + 'môn học'
-    + '\nBạn có : ' + soTinA + ' tín chỉ A'
-    + '\nBạn có : ' + soTinB + ' tín chỉ B'
-    + '\nBạn có : ' + soTinC + ' tín chỉ C'
-    + '\nBạn có : ' + soTinD + ' tín chỉ D'
-    + '\nBạn có : ' + soTinF + ' tín chỉ F'
-    + '\nTổng số tín chỉ tích lũy : ' + tongTinChiTichLuy + ' tín chỉ'
-    + '\nĐiểm tích lũy của bạn : ' + diemTichLuy
-);
+alert(`Xin chào !!!
+    Bạn trượt : ${monHocDiemF} môn học
+    Bạn có : ${soTinA} tín chỉ A
+    Bạn có : ${soTinB} tín chỉ B
+    Bạn có : ${soTinC} tín chỉ C
+    Bạn có : ${soTinD} tín chỉ D
+    Bạn có : ${soTinF} tín chỉ F
+    Tổng số tín chỉ tích lũy : ${tongTinChiTichLuy} tín chỉ
+    Điểm tích lũy của bạn : ${diemTichLuy}
+`);
       
