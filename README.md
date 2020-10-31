@@ -40,7 +40,7 @@ for(let item of listData){
         //check mấy môn thể chất và toán
         let codeSubject = item[1].textContent;
         // Code by Minh Chen nhưng do Minh ngu Regex nên dùng tạm indexof
-        if(codeSubject.indexOf('MATH0') === -1 && codeSubject.indexOf('TDUC') === -1) {
+        if(codeSubject.indexOf('MATH0') === -1 && codeSubject.indexOf('GDTC') === -1) {
             let charPoint = item[13].textContent.slice(-1);
             let numPoint = convertCharPoint(charPoint);
             let soTinMonHoc = parseInt(item[3].textContent);
