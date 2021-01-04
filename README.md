@@ -25,7 +25,7 @@ let diemTichLuy;
 let soTinA = 0, soTinB = 0, soTinC = 0, soTinD = 0, soTinF = 0;
 
 //Đổi điểm chữ ra số : A = 4, B = 3, C = 2, D = 1, F = 0
-const listPoint = ['F', 'D', 'C', 'B', 'A'];
+let listPoint = ['F', 'D', 'C', 'B', 'A'];
 
 
 for(let item of listData){
@@ -35,7 +35,6 @@ for(let item of listData){
 
         //check mấy môn thể chất và toán
         let codeSubject = item[1].textContent;
-        // Code by Minh Chen nhưng do Minh ngu Regex nên dùng tạm indexof
         if(codeSubject.indexOf('MATH0') === -1 && codeSubject.indexOf('GDTC') === -1) {
             let charPoint = item[13].textContent.slice(-1);
             let numPoint = listPoint.indexOf(charPoint);
@@ -48,8 +47,6 @@ for(let item of listData){
              
 
             if (numPoint !== 0) {
-              
-
               if(charPoint === 'A')
                 soTinA += soTinMonHoc;
               if(charPoint === 'B')
