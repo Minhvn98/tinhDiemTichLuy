@@ -14,56 +14,67 @@
 
 
 let studentName = document.getElementById('lblStudentName').textContent
-let listData = document.querySelectorAll('#tblStudentMark tr');
-listData = Array.from(listData);
-listData = listData.slice(1, listData.length - 1);
+let listData = document.querySelectorAll('#tblStudentMark tr')
+listData = Array.from(listData)
+listData = listData.slice(1, listData.length - 1)
 
-let tongDiemQuyDoi = 0;
-let tongTinChiTichLuy = 0; //ko tính thể chất và toán 1-5 (toán 1-5 giờ đã đổi tên)
-let monHocDiemF = 0;  //ko tính thể chất và toán 1-5 (toán 1-5 giờ đã đổi tên)
-let diemTichLuy;
-let soTinA = 0, soTinB = 0, soTinC = 0, soTinD = 0, soTinF = 0;
+let tongDiemQuyDoi = 0
+let tongTinChiTichLuy = 0 //ko tính thể chất và toán 1-5 (toán 1-5 giờ đã đổi tên)
+let monHocDiemF = 0 //ko tính thể chất và toán 1-5 (toán 1-5 giờ đã đổi tên)
+let diemTichLuy
+let soTinA = 0,
+  soTinB = 0,
+  soTinC = 0,
+  soTinD = 0,
+  soTinF = 0
 
 //Đổi điểm chữ ra số : A = 4, B = 3, C = 2, D = 1, F = 0
-let listPoint = ['F', 'D', 'C', 'B', 'A'];
+let listPoint = ['F', 'D', 'C', 'B', 'A']
 
+let coursesNotCalc = [
+  'BOI111',
+  'CL111',
+  'DK111',
+  'CV111',
+  'BC121',
+  'BC111',
+  'MATH0111',
+  'MATH0253',
+  'MATH0122',
+  'MATH0243',
+  'MATH0123',
+]
 
-for(let item of listData){
-    item = item.querySelectorAll('td');
+for (let item of listData) {
+  item = item.querySelectorAll('td')
 
-    if(item.length !== 0) {
+  if (item.length !== 0) {
+    //check mấy môn thể chất và toán
+    let codeSubject = item[1].textContent
+    if (!coursesNotCalc.includes(codeSubject)) {
+      let charPoint = item[13].textContent.slice(-1)
+      let numPoint = listPoint.indexOf(charPoint)
+      let soTinMonHoc = parseInt(item[3].textContent)
 
-        //check mấy môn thể chất và toán
-        let codeSubject = item[1].textContent;
-        if(codeSubject.indexOf('MATH0') === -1 && codeSubject.indexOf('GDTC') === -1) {
-            let charPoint = item[13].textContent.slice(-1);
-            let numPoint = listPoint.indexOf(charPoint);
-            let soTinMonHoc = parseInt(item[3].textContent);
+      if (numPoint === 0) {
+        monHocDiemF += 1
+        soTinF += soTinMonHoc
+      }
 
-            if(numPoint === 0){
-              monHocDiemF += 1;
-              soTinF += soTinMonHoc;
-            }
-             
+      if (numPoint !== 0) {
+        if (charPoint === 'A') soTinA += soTinMonHoc
+        if (charPoint === 'B') soTinB += soTinMonHoc
+        if (charPoint === 'C') soTinC += soTinMonHoc
+        if (charPoint === 'D') soTinD += soTinMonHoc
 
-            if (numPoint !== 0) {
-              if(charPoint === 'A')
-                soTinA += soTinMonHoc;
-              if(charPoint === 'B')
-                soTinB += soTinMonHoc; 
-              if(charPoint === 'C')
-                soTinC += soTinMonHoc;
-              if(charPoint === 'D')
-                soTinD += soTinMonHoc;
-
-              tongTinChiTichLuy += soTinMonHoc;
-              tongDiemQuyDoi += (soTinMonHoc * numPoint);
-            }            
-        }
+        tongTinChiTichLuy += soTinMonHoc
+        tongDiemQuyDoi += soTinMonHoc * numPoint
+      }
     }
+  }
 }
 
-diemTichLuy = tongDiemQuyDoi/tongTinChiTichLuy
+diemTichLuy = tongDiemQuyDoi / tongTinChiTichLuy
 
 alert(`Xin chào : ${studentName}
     Bạn có : ${soTinA} tín chỉ A
@@ -74,4 +85,4 @@ alert(`Xin chào : ${studentName}
     Tổng số tín chỉ tích lũy : ${tongTinChiTichLuy} tín chỉ
     Điểm tích lũy của bạn : ${diemTichLuy}
     Điểm làm tròn : ${parseFloat(diemTichLuy).toFixed(2)}
-`);
+`)
